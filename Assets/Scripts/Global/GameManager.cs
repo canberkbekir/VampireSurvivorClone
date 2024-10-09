@@ -13,6 +13,7 @@ namespace Global
         [SerializeField] public EnemySpawnerManager enemySpawnerManager;
         [SerializeField] public LevelUpManager levelUpManager;
         [SerializeField] public UIManager uiManager;
+        [SerializeField] public DifficultyManager difficultyManager;
         
         [Space(20)]
         [Header("References")]
