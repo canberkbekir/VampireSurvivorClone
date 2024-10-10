@@ -47,7 +47,7 @@ MonoBehaviour:
   maxHandCount: 6
   radius: 0.6
   handPrefab: {fileID: 119036608679920684, guid: a1b9d87b18050c0458cb5865dfdafb6a, type: 3}
-  weaponData: {fileID: 11400000, guid: 437a9c23bef2fcc41ac9553e86929513, type: 2}
+  weaponData: {fileID: 11400000, guid: de9c4f6e92ebc09449a2a5bc8e4eb7d6, type: 2}
   startingHandCount: 1
   _playerAttackZone: {fileID: 4228535951931412780}
   Hands: []
@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 748170467877002090}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a9d5da76d3fdd4f9db8b0af39c7c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 1
   damage: 10
   speed: 3
   attackSpeed: 1

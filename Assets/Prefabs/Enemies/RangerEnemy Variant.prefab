@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangerEnemy Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5324935222365839868, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7449131766302904330, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
       propertyPath: m_Sprite
       value: 

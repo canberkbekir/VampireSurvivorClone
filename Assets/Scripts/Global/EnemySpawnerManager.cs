@@ -1,26 +1,34 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using Enemies;
 using Random = UnityEngine.Random;
 
 namespace Global
 {
     public class EnemySpawnerManager : MonoBehaviour
-    { 
-        [SerializeField] private GameObject objectToSpawn;
+    {  
         [SerializeField] private float spawnDistance = 1f;
         [SerializeField] private float spawnIntervalTime = 2f;
-        [SerializeField] private int numberOfEnemiesToSpawn = 5;  
+        [SerializeField] private int numberOfEnemiesToSpawn = 5; 
+        [SerializeField] private List<EnemyData> enemies;
         
-        private bool isSpawnOnDuration = false;
-
+        [Space]
+        [Header("References")]
+        [SerializeField] private DifficultyManager difficultyManager;
+        
+        private bool isSpawnOnDuration = false; 
         private Camera mainCamera;
 
         private void Start()
         {
-            mainCamera = Camera.main; 
+            mainCamera = Camera.main;
+            difficultyManager = GameManager.Instance.difficultyManager;
+            difficultyManager.OnDifficultyLevelChanged += IncreaseDifficulty;
         }
 
+      
         private void Update()
         {
             if (!isSpawnOnDuration)
@@ -32,8 +40,24 @@ namespace Global
         public void StartSpawning()
         {
             StartCoroutine(SpawnEnemies());
+        } 
+
+        public void SpawnObjectOutsideScreen()
+        {
+            for (var i = 0; i < numberOfEnemiesToSpawn; i++)
+            {
+                var spawnPosition = GetRandomPositionOutsideScreen();
+                var enemyObject = GetRandomEnemy().enemyPrefab;
+                Instantiate(enemyObject, (Vector2)spawnPosition, Quaternion.identity);
+            } 
+        } 
+        private void IncreaseDifficulty(int obj)
+        {
+            spawnIntervalTime -= 0.1f;
+            numberOfEnemiesToSpawn += 1;
         }
 
+        
         private IEnumerator SpawnEnemies()
         {
             isSpawnOnDuration = true;
@@ -41,14 +65,15 @@ namespace Global
             yield return new WaitForSeconds(spawnIntervalTime); 
             isSpawnOnDuration = false;
         }
-
-        public void SpawnObjectOutsideScreen()
-        {
-            for (var i = 0; i < numberOfEnemiesToSpawn; i++)
+        
+        private EnemyData GetRandomEnemy()
+        { 
+            if (enemies == null || enemies.Count == 0)
             {
-                Vector3 spawnPosition = GetRandomPositionOutsideScreen();
-                Instantiate(objectToSpawn, (Vector2)spawnPosition, Quaternion.identity);
-            } 
+                throw new InvalidOperationException("No enemies available to spawn.");
+            }
+            var randomIndex = Random.Range(0, enemies.Count);
+            return enemies[randomIndex];
         }
 
         private Vector3 GetRandomPositionOutsideScreen()
@@ -70,5 +95,7 @@ namespace Global
             };
             return mainCamera.ScreenToWorldPoint(screenPosition);
         }
+        
+        
     }
 }

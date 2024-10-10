@@ -11,6 +11,7 @@ namespace Global
         [SerializeField] private GameObject _pauseBackground;
         [SerializeField] private GameObject _pauseMenu;
         [SerializeField] private GameObject _updateMenu;
+        [SerializeField] private GameObject _gameOverMenu;
         
         [Space]
         [Header("Controllers")]
@@ -20,6 +21,7 @@ namespace Global
         [SerializeField] private Input.InputObject _inputObject;
         [SerializeField] private GameManager _gameManager;
 
+        private Player.Player _player;
         private void Awake()
         { 
             _inputObject.OnPauseEvent += PauseGame;
@@ -29,7 +31,11 @@ namespace Global
         private void Start()
         {
             _gameManager = GameManager.Instance;
+            _player = _gameManager.playerManager.GetPlayer();
+            _player.OnPlayerDeath += OnPlayerDeath;
         }
+
+       
 
         #region Event Handlers
 
@@ -45,6 +51,12 @@ namespace Global
             _inputObject.SetGameplay();
             _gameManager.ResumeGame();
             ClosePauseMenu();
+        }
+        
+        private void OnPlayerDeath()
+        {
+            _gameManager.PauseGame();
+            OpenGameOverMenu();
         }
 
         #endregion
@@ -71,6 +83,12 @@ namespace Global
         {
             _pauseBackground.SetActive(false);
             _updateMenu.SetActive(false);
+        }
+        
+        public void OpenGameOverMenu()
+        {
+            _pauseBackground.SetActive(true); 
+            _gameOverMenu.SetActive(true);
         }
         
     }

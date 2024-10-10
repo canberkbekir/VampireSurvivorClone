@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1809452742446729764, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
+      propertyPath: dropPrefab
+      value: 
+      objectReference: {fileID: 8792634526256237654, guid: 09189dee063e7b74595be3bc64bc0722, type: 3}
+    - target: {fileID: 1809452742446729764, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
+      propertyPath: maxDropDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5160899643541511584, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
       propertyPath: m_Name
       value: ChargerEnemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324935222365839868, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7449131766302904330, guid: 7fff771e374fc4747b0ce3263ba57333, type: 3}
       propertyPath: m_Sprite

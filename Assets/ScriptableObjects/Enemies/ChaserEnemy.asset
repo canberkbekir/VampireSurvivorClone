@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: ChaserEnemy
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  health: 10
+  health: 20
   damage: 1
   attackRange: 0.35
   chaseRange: 4
   attackCooldown: 1
+  projectileSpeed: 0
   experienceMultiplier: 0
   projectilePrefab: {fileID: 0}
   enemyPrefab: {fileID: 1032111960530109214, guid: d96eaf67b0d25a34eb1c6f80ba6564b2, type: 3}

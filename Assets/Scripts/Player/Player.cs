@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Player
@@ -10,6 +11,7 @@ namespace Player
 
         [Header("Debug")] [SerializeField] private float _currentHealth; 
 
+        public event Action OnPlayerDeath;
         private void Awake()
         {
             playerStats = gameObject.GetComponent<PlayerStats>();
@@ -22,7 +24,8 @@ namespace Player
             _currentHealth -= damage;
             if (_currentHealth <= 0)
             {
-                // Player is dead
+                Debug.Log("Player died");
+                OnPlayerDeath?.Invoke();
             }
         }
 

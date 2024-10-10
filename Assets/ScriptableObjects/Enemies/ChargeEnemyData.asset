@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChargeEnemyData
   m_EditorClassIdentifier: 
   movementSpeed: 2
-  health: 10
+  health: 20
   damage: 1
   attackRange: 3
   chaseRange: 4

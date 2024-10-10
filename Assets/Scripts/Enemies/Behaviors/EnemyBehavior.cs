@@ -24,6 +24,14 @@ namespace Enemies.Behaviors
             UpdatePlayerDistance();
         }
 
+        private void OnCollisionEnter2D(Collision2D other)
+        { 
+            if (other.gameObject.CompareTag("Player"))
+            {
+                Attack();
+            } 
+        }
+
         private void UpdatePlayerDistance()
         { 
             playerDistance = Vector3.Distance(transform.position, player.transform.position);

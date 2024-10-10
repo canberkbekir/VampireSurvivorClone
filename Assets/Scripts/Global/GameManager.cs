@@ -51,6 +51,19 @@ namespace Global
             Time.timeScale = 1;
         }
 
+        public void RestartGame()
+        {
+            Time.timeScale = 1;
+            var currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene); 
+        }
+        
+        public void QuitGame()
+        {
+            Time.timeScale = 1;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);  
+        }
+
        
     }
 }
