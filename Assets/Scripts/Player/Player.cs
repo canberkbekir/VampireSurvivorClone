@@ -25,6 +25,7 @@ namespace Player
             if (_currentHealth <= 0)
             {
                 Debug.Log("Player died");
+                SetHighScore();
                 OnPlayerDeath?.Invoke();
             }
         }
@@ -46,6 +47,16 @@ namespace Player
         public void SetAttackRange(float newAttackRange)
         {
             playerStats.attackRange = newAttackRange;
+        }
+        
+        private void SetHighScore()
+        {
+            var levelUpManager = Global.GameManager.Instance.levelUpManager;
+            var highScore = PlayerPrefs.GetInt(Configs.GlobalProperties.HighScore.ToString());
+            if (levelUpManager.GetCurrentLevel() > highScore)
+            {
+                PlayerPrefs.SetInt(Configs.GlobalProperties.HighScore.ToString(),levelUpManager.GetCurrentLevel());
+            } 
         }
     }
 }
